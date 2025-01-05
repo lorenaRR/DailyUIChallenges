@@ -229,6 +229,50 @@ p {
     color: rgb(139, 38, 38) !important;
 }
 
+.overlay{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.177);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .popup{
+        width: 500px;
+        height: 170px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & p{
+            font-size: 20px;
+        }
+
+        & button {
+            height: 40px;
+            width: 60px;
+            background-color: $left-color;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 15px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+    }
+}
+
 //SLIDE-RIGHT
 .slide-right {
     animation: 3s slide-right;

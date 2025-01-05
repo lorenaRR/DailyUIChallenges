@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -13,14 +13,14 @@ class User {
 
 class NewUser {
   name: string;
-  birthdate: Date;
+  birthdate: string;
   mail: string;
   user: string;
   password: string;
   password2: string;
   constructor() {
     this.name = '';
-    this.birthdate = new Date();
+    this.birthdate = new Date().toDateString();
     this.mail = '';
     this.user = '';
     this.password = '';
@@ -51,7 +51,12 @@ export class AppComponent implements OnInit {
   user: User = new User();
   newUser: NewUser = new NewUser();
 
-  constructor() { }
+  popUpActive: boolean = false;
+  message: string = '';
+
+  constructor() {
+    this.newUser.birthdate = formatDate(Date.now(),'yyyy-MM-dd','en-US');
+  }
 
   ngOnInit(): void {
     this.autoSlide();
@@ -93,25 +98,30 @@ export class AppComponent implements OnInit {
   singIn() {
     let exists = this.usersList.find(x => x.user === this.user.user && x.pass === this.user.password);
     if (exists) {
-      alert('Welcome in!');
+      this.popUpActive = true;
+      this.message = 'Welcome in!';
       this.user = new User();
     }
     else {
-      alert('Incorret user or password.');
+      this.popUpActive = true;
+      this.message = 'Incorret user or password.';
     }
   }
 
   singUp() {
     let user = { user: this.newUser.user, pass: this.newUser.password };
     this.usersList.push(user);
-    alert('Account created successfully!');
+    this.popUpActive = true;
+    this.message = 'Account created successfully!';
     this.newUser = new NewUser();
     this.user = new User();
     this.isNew = false;
   }
 
   validForm() {
-    if (!this.validUser() || !this.validEmail() || !this.validPassword()) {
+    if (!this.validUser() || !this.validEmail() || !this.validPassword()
+      || this.newUser.name === '' || !this.newUser.birthdate || this.newUser.mail === ''
+      || this.newUser.user === '' || this.newUser.password === '' || this.newUser.password2 === '') {
       return false;
     }
     return true;
@@ -135,6 +145,10 @@ export class AppComponent implements OnInit {
   validEmail() {
     const regexPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return regexPattern.test(this.newUser.mail);
+  }
+
+  ok() {
+    this.popUpActive = false;
   }
 
 }

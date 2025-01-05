@@ -54,7 +54,8 @@
           <input type="text" name="user" id="user" [(ngModel)]="user.user">
           <label>Password</label>
           <input type="password" name="pass" id="pass" [(ngModel)]="user.password">
-          <button type="button" (click)="singIn()" [disabled]="user.user === '' || user.password === ''">Sing In</button>
+          <button type="button" (click)="singIn()" [disabled]="user.user === '' || user.password === ''">Sing
+            In</button>
         </div>
         <div *ngIf="isNew" class="form">
           <label>Name</label>
@@ -63,7 +64,7 @@
           <input type="date" name="birthdate" id="birthdate" [(ngModel)]="newUser.birthdate">
           <label *ngIf="validEmail() || newUser.mail == '' ">E-mail</label>
           <label class="error" *ngIf="!validEmail() && newUser.mail !== '' ">Incorrect e-mail format</label>
-          <input type="text" name="mail" id="mail" [(ngModel)]="newUser.mail" >
+          <input type="text" name="mail" id="mail" [(ngModel)]="newUser.mail">
           <label *ngIf="validUser() || newUser.user == '' ">User</label>
           <label class="error" *ngIf="!validUser() && newUser.user !== '' ">User already exists</label>
           <input type="text" name="newuser" id="newuser" [(ngModel)]="newUser.user">
@@ -81,6 +82,13 @@
       <a id="vectors" href="https://www.vecteezy.com/members/zulfanmuhammad" target="_blank">Travel Vectors by <b>
           zulfanmuhammad</b>
         (Vecteezy)</a>
+    </div>
+  </div>
+
+  <div *ngIf="popUpActive" class="overlay">
+    <div class="popup">
+      <p>{{message}}</p>
+      <button type="button" (click)="ok()">Ok</button>
     </div>
   </div>
 
