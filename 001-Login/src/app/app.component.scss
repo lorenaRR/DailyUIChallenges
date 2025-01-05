@@ -1,0 +1,260 @@
+$left-color: #274743;
+$right-color: #7daaa5;
+$light-highlight-color: #d2f0f0;
+$dark-highlight-color: #7daaa5;
+$text-color: white;
+
+i {
+    color: $text-color;
+    font-size: 100px;
+    margin: 15px;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px 0px 20px 0px;
+}
+
+p {
+    margin: 40px;
+    font-size: 25px;
+}
+
+.card {
+    height: 700px;
+    width: 1000px;
+    display: flex;
+    align-items: center;
+    color: $text-color;
+    border-radius: 6px;
+    box-shadow: 0px 0px 59px 23px rgba(0, 0, 0, 0.28);
+
+    & .left {
+        font-family: "Ms Madi", cursive;
+        font-weight: 400;
+        font-style: normal;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        background-color: $left-color;
+        width: 50%;
+        height: 100%;
+        border-radius: 6px 0px 0px 6px;
+        box-shadow: inset -20px 7px 29px -21px rgba(0, 0, 0, 0.48);
+
+        & .slide {
+            width: 75%;
+            height: 75%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+
+            & span {
+                width: 100px;
+                height: 100px;
+                margin: 20px;
+            }
+
+            & img {
+                margin-top: 30px;
+            }
+
+            & p {
+                text-align: center;
+            }
+        }
+
+        & .controls {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            justify-content: center;
+            width: 25%;
+            height: 25%;
+
+            & .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: $light-highlight-color;
+                margin: 10px;
+                cursor: pointer;
+            }
+
+            & .dot-selected {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: $dark-highlight-color;
+                margin: 10px;
+                cursor: pointer;
+                box-shadow: 0px 0px 8px 4px rgba(177, 177, 177, 0.28);
+            }
+        }
+    }
+
+    & .right {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        background-color: $right-color;
+        color: $left-color;
+        width: 50%;
+        height: 100%;
+        border-radius: 0px 6px 6px 0px;
+        box-shadow: inset 20px 7px 29px -21px rgba(0, 0, 0, 0.48);
+
+        & button {
+            height: 40px;
+            background-color: $left-color;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-family: "Quicksand", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-size: 15px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        & button:disabled,
+        button[disabled]{
+            opacity: 0.5; 
+            cursor: default;
+        }
+
+        & .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 100%;
+            text-decoration: none;
+            color:white;
+
+            & a{
+                margin: 10px;
+                cursor: pointer;
+            }
+        }
+
+        & .button-selected{
+            font-weight: bolder;
+            text-decoration:underline;
+            color:$left-color;
+        }
+
+        & .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+
+            & h3 {
+                font-family: "Ms Madi", cursive;
+                font-weight: bolder;
+                font-size: 40px;
+                font-style: normal;
+                margin: 10px;
+            }
+
+            & small {
+                margin-top: -18px;
+                font-style: italic;
+            }
+        }
+
+        & .form {
+            display: flex;
+            flex-direction: column;
+            width: 75%;
+            height: 450px;
+            justify-content: center;
+
+            & label{
+                font-weight: bold;
+            }
+
+            & input {
+                border: none;
+                border-radius: 5px;
+                background-color: #ffffff8a;
+                height: 30px;
+                margin-bottom: 10px;
+                color: $left-color;
+                font-family: "Quicksand", sans-serif;
+                font-optical-sizing: auto;
+                font-style: normal;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 20px;
+
+    & #author {
+        color: $text-color;
+        text-decoration: none;
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    & #vectors {
+        color: $text-color;
+        text-decoration: none;
+        font-size: 10px;
+    }
+}
+
+.error{
+    color: rgb(139, 38, 38) !important;
+}
+
+//SLIDE-RIGHT
+.slide-right {
+    animation: 3s slide-right;
+}
+
+@keyframes slide-right {
+    from {
+        margin-right: 40%;
+    }
+
+    to {
+        margin-right: 0%;
+    }
+}
+
+//FADE-IN
+.fade-in {
+    animation: fadeIn ease 3s;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

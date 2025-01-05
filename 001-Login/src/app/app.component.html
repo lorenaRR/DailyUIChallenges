@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="app.component.scss">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ms+Madi&family=Quicksand:wght@300..700&display=swap"
+    rel="stylesheet">
+
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="left">
+        <div *ngIf="slide1" class="slide fade-in">
+          <img src="/woman.png" alt="woman" width="300px">
+          <p>Life is either a daring adventure or nothing at all.</p>
+        </div>
+        <div *ngIf="slide2" class="slide fade-in">
+          <img src="/plane.png" alt="plane" width="300px">
+          <p>Travel far enough, you meet yourself.</p>
+        </div>
+        <div *ngIf="slide3" class="slide fade-in">
+          <img src="/photo.png" alt="photo" width="350px">
+          <p>The real voyage of discovery consists not in seeking new landscapes, but in having new
+            eyes.</p>
+        </div>
+        <div class="controls">
+          <div [ngClass]="{'dot': !slide1, 'dot-selected': slide1}" (click)="onControlClick(1)"></div>
+          <div [ngClass]="{'dot': !slide2, 'dot-selected': slide2}" (click)="onControlClick(2)"></div>
+          <div [ngClass]="{'dot': !slide3, 'dot-selected': slide3}" (click)="onControlClick(3)"></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="buttons">
+          <a [ngClass]="{'button-selected': !isNew}" (click)="isNew=false">Sing In</a>
+          <a [ngClass]="{'button-selected': isNew}" (click)="isNew=true">Sing Up</a>
+        </div>
+        <div class="logo">
+          <img src="/map-pin.png" alt="plane" width="100px">
+          <h3>Traveline</h3>
+          <small>Your travel agency</small>
+        </div>
+        <div *ngIf="!isNew" class="form">
+          <label>User</label>
+          <input type="text" name="user" id="user" [(ngModel)]="user.user">
+          <label>Password</label>
+          <input type="password" name="pass" id="pass" [(ngModel)]="user.password">
+          <button type="button" (click)="singIn()" [disabled]="user.user === '' || user.password === ''">Sing In</button>
+        </div>
+        <div *ngIf="isNew" class="form">
+          <label>Name</label>
+          <input type="text" name="name" id="name" [(ngModel)]="newUser.name">
+          <label>Birthdate</label>
+          <input type="date" name="birthdate" id="birthdate" [(ngModel)]="newUser.birthdate">
+          <label *ngIf="validEmail() || newUser.mail == '' ">E-mail</label>
+          <label class="error" *ngIf="!validEmail() && newUser.mail !== '' ">Incorrect e-mail format</label>
+          <input type="text" name="mail" id="mail" [(ngModel)]="newUser.mail" >
+          <label *ngIf="validUser() || newUser.user == '' ">User</label>
+          <label class="error" *ngIf="!validUser() && newUser.user !== '' ">User already exists</label>
+          <input type="text" name="newuser" id="newuser" [(ngModel)]="newUser.user">
+          <label>Password</label>
+          <input type="password" name="pass1" id="pass1" [(ngModel)]="newUser.password">
+          <label *ngIf="validPassword() || newUser.password2 == '' ">Repeat password</label>
+          <label class="error" *ngIf="!validPassword() && newUser.password2 !== '' ">Passwords do not match</label>
+          <input type="password" name="pass2" id="pass2" [(ngModel)]="newUser.password2">
+          <button type="button" (click)="singUp()" [disabled]="!validForm()">Sing Up</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <a id="author" href="" target="_blank">Designed by <b>Lorena Rodríguez</b> </a>
+      <a id="vectors" href="https://www.vecteezy.com/members/zulfanmuhammad" target="_blank">Travel Vectors by <b>
+          zulfanmuhammad</b>
+        (Vecteezy)</a>
+    </div>
+  </div>
+
+</body>
+
+</html>
