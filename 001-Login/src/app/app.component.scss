@@ -128,8 +128,8 @@ p {
         }
 
         & button:disabled,
-        button[disabled]{
-            opacity: 0.5; 
+        button[disabled] {
+            opacity: 0.5;
             cursor: default;
         }
 
@@ -139,18 +139,18 @@ p {
             justify-content: flex-end;
             width: 100%;
             text-decoration: none;
-            color:white;
+            color: white;
 
-            & a{
+            & a {
                 margin: 10px;
                 cursor: pointer;
             }
         }
 
-        & .button-selected{
+        & .button-selected {
             font-weight: bolder;
-            text-decoration:underline;
-            color:$left-color;
+            text-decoration: underline;
+            color: $left-color;
         }
 
         & .logo {
@@ -180,7 +180,7 @@ p {
             height: 450px;
             justify-content: center;
 
-            & label{
+            & label {
                 font-weight: bold;
             }
 
@@ -225,13 +225,13 @@ p {
     }
 }
 
-.error{
+.error {
     color: rgb(139, 38, 38) !important;
 }
 
-.overlay{
+.overlay {
     position: fixed;
-    top:0px;
+    top: 0px;
     left: 0px;
     width: 100%;
     height: 100vh;
@@ -241,7 +241,7 @@ p {
     justify-content: center;
     align-items: center;
 
-    & .popup{
+    & .popup {
         width: 500px;
         height: 170px;
         background-color: white;
@@ -250,7 +250,7 @@ p {
         justify-content: center;
         align-items: center;
 
-        & p{
+        & p {
             font-size: 20px;
         }
 
@@ -301,4 +301,33 @@ p {
     100% {
         opacity: 1;
     }
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        margin: 0px;
+        width: 100%;
+        height: 100%; 
+    }
+
+    .card {
+        width: 100%;
+        height: 100%;   
+        margin: 0px;
+
+        & .left {
+            display: none !important;
+        }
+
+        & .right {
+            width: 100%;
+            height:100%;
+            margin: 0px;
+        }
+    }
+
+    .footer {
+        position: relative;
+    }
+
 }
